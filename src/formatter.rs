@@ -2,6 +2,7 @@ use std::fs;
 use std::path::Path;
 use std::io::{BufReader, BufWriter, Write};
 use std::fs::File;
+use std::borrow::Cow;
 
 pub struct Formatter {
     line_length: usize,
@@ -25,7 +26,16 @@ impl Formatter {
         Ok(())
     }
 
-    fn format_content(&self, content: &str) -> String {
+    fn format_content<'a>(&self, content: &'a str) -> Cow<'a, str> {
+        if content.lines().all(|line| line.len() <= self.line_length) {
+            Cow::Borrowed(content)
+        } else {
+            let formatted = self.wrap_long_lines(content);
+            Cow::Owned(formatted)
+        }
+    }
+
+    fn wrap_long_lines(&self, content: &str) -> String {
         let mut formatted_lines = Vec::new();
         for line in content.lines() {
             if line.len() > self.line_length {
