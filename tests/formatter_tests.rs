@@ -26,3 +26,15 @@ fn test_format_file() {
     let expected = "internal static async Task<string> ExecuteKustoQueryAsync(\n    string clusterUri,\n    string databaseName,\n    string kustoQuery,\n    object? parameters = null,\n    CancellationToken cancellationToken = default)\n";
     assert_eq!(formatted_content, expected);
 }
+
+#[test]
+fn test_wrap_line_different_lengths() {
+    let test_cases = vec![
+        (80, "internal static async Task<string> ExecuteKustoQueryAsync(string clusterUri, string databaseName, string kustoQuery, object? parameters = null, CancellationToken cancellationToken = default)", "internal static async Task<string> ExecuteKustoQueryAsync(\n    string clusterUri,\n    string databaseName,\n    string kustoQuery,\n    object? parameters = null,\n    CancellationToken cancellationToken = default)"),
+        (40, "This is a long line that should be wrapped", "This is a long line that should be\nwrapped"),
+    ];
+    for (line_length, input, expected) in test_cases {
+        let formatter = Formatter::new(line_length);
+        assert_eq!(formatter.wrap_line(input), expected);
+    }
+}
