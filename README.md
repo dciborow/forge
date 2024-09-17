@@ -130,7 +130,15 @@ How to Evaluate & Examples:
   - https://aka.ms/StartRight/README-Template/Instructions#deployment-and-continuous-integration
 -->
 
-_At this time, the repository does not use continuous integration or produce a website, artifact, or anything deployed._
+The repository uses a GitHub Action pipeline to automatically test the code and run static analysis for Rust. The pipeline is triggered on push and pull request events for the `main` branch.
+
+### Running the CI Pipeline
+
+To manually trigger the CI pipeline, you can use the following steps:
+
+1. Go to the "Actions" tab in your GitHub repository.
+2. Select the "Rust CI" workflow from the list.
+3. Click on the "Run workflow" button and select the branch you want to run the workflow on.
 
 <!-----------------------[  Versioning and Changelog  ]-----<optional> section below--------------------->
 
