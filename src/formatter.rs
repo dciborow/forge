@@ -50,7 +50,8 @@ impl Formatter {
     fn wrap_line(&self, line: &str) -> String {
         let mut wrapped_line = String::new();
         let mut current_length = 0;
-        for word in line.split_whitespace() {
+        let words_with_spaces: Vec<&str> = line.split_inclusive(' ').collect();
+        for word in words_with_spaces {
             if current_length + word.len() + 1 > self.line_length {
                 wrapped_line.push('\n');
                 current_length = 0;
