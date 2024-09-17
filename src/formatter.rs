@@ -1,5 +1,7 @@
 use std::fs;
 use std::path::Path;
+use std::io::{BufReader, BufWriter, Write};
+use std::fs::File;
 
 pub struct Formatter {
     line_length: usize,
@@ -11,9 +13,15 @@ impl Formatter {
     }
 
     pub fn format_file(&self, file_path: &Path) -> Result<(), std::io::Error> {
-        let content = fs::read_to_string(file_path)?;
-        let formatted_content = self.format_content(&content);
-        fs::write(file_path, formatted_content)?;
+        let file = File::open(file_path)?;
+        let reader = BufReader::new(file);
+        let mut writer = BufWriter::new(File::create(file_path)?);
+
+        for line in reader.lines() {
+            let formatted_line = self.format_line(&line?);
+            writeln!(writer, "{}", formatted_line)?;
+        }
+        writer.flush()?;
         Ok(())
     }
 
