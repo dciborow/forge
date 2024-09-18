@@ -1,6 +1,6 @@
 use std::fs;
 use std::path::Path;
-use std::io::{BufReader, BufWriter, Write};
+use std::io::{BufReader, BufWriter, Write, BufRead};
 use std::fs::File;
 use std::borrow::Cow;
 
@@ -24,6 +24,14 @@ impl Formatter {
         }
         writer.flush()?;
         Ok(())
+    }
+
+    fn format_line(&self, line: &str) -> String {
+        if line.len() <= self.line_length {
+            line.to_string()
+        } else {
+            self.wrap_line(line)
+        }
     }
 
     fn format_content<'a>(&self, content: &'a str) -> Cow<'a, str> {
