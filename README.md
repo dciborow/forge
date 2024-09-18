@@ -1,13 +1,10 @@
 <!--=========================README TEMPLATE INSTRUCTIONS=============================
 ======================================================================================
-
 - THIS README TEMPLATE LARGELY CONSISTS OF COMMENTED OUT TEXT. THIS UNRENDERED TEXT IS MEANT TO BE LEFT IN AS A GUIDE 
   THROUGHOUT THE REPOSITORY'S LIFE WHILE END USERS ONLY SEE THE RENDERED PAGE CONTENT. 
 - Any italicized text rendered in the initial template is intended to be replaced IMMEDIATELY upon repository creation.
-
 - This template is default but not mandatory. It was designed to compensate for typical gaps in Microsoft READMEs 
   that slow the pace of work. You may delete it if you have a fully populated README to replace it with.
-
 - Most README sections below are commented out as they are not known early in a repository's life. Others are commented 
   out as they do not apply to every repository. If a section will be appropriate later but not known now, consider 
   leaving it in commented out and adding an issue as a reminder.
@@ -15,15 +12,10 @@
   "built with", "acknowledgments", "folder structure", etc.
 - You can easily find the places to add content that will be rendered to the end user by searching 
 within the file for "TODO".
-
-
-
 - ADDITIONAL EXTERNAL TEMPLATE INSTRUCTIONS:
   -  https://aka.ms/StartRight/README-Template/Instructions
-
 ======================================================================================
-====================================================================================-->
-
+===================================================================================-->
 
 <!---------------------[  Description  ]------------------<recommended> section below------------------>
 
@@ -41,7 +33,6 @@ INSTRUCTIONS:
     5. What is the larger context?
 - Write for a reasonable person with zero context regarding your product, org, and team. The person may be evaluating if 
 this is something they can use.
-
 How to Evaluate & Examples: 
   - https://aka.ms/StartRight/README-Template/Instructions#description
 -->
@@ -62,73 +53,68 @@ This repository is licensed under the MIT License. See the [LICENSE](LICENSE) fi
 INSTRUCTIONS:
   - Write instructions such that any new user can get the project up & running on their machine.
   - This section has subsections described further down of "Prerequisites", "Installing", and "Deployment". 
-
 How to Evaluate & Examples:
   - https://aka.ms/StartRight/README-Template/Instructions#getting-started
 -->
 
-<!---- [TODO]  CONTENT GOES BELOW ------->
-*Description of how to install and use the code or content goes here*
-<!------====-- CONTENT GOES ABOVE ------->
-
-
-<!-----------------------[ Prerequisites  ]-----------------<optional> section below--------------------->
 ### Prerequisites
 
-<!--------------------------------------------------------
-INSTRUCTIONS:
-- Describe what things a new user needs to install in order to install and use the repository. 
+To set up the project, you need to have the following installed:
 
-How to Evaluate & Examples:
-  - https://aka.ms/StartRight/README-Template/Instructions#prerequisites
----------------------------------------------------------->
+- Rust (https://www.rust-lang.org/tools/install)
 
-<!---- [TODO]  CONTENT GOES BELOW ------->
-There are no prerequisites required to run this code or use this repository.
-<!------====-- CONTENT GOES ABOVE ------->
-
-
-<!-----------------------[  Installing  ]-------------------<optional> section below------------------>
 ### Installing
 
-<!--
-INSTRUCTIONS:
-- A step by step series of examples that tell you how to get a development environment and your code running. 
-- Best practice is to include examples that can be copy and pasted directly from the README into a terminal.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/dciborow/forge.git
+   cd forge
+   ```
 
-How to Evaluate & Examples:
-  - https://aka.ms/StartRight/README-Template/Instructions#installing
+2. Build the project:
+   ```sh
+   cargo build
+   ```
 
-<!---- [TODO]  CONTENT GOES BELOW ------->
-This repository does not hold installable content.
-<!------====-- CONTENT GOES ABOVE ------->
+### Running the Formatter
 
+To run the C# formatter on a sample file, use the following command:
+```sh
+cargo run -- samples/sample.cs
+```
+
+### Example
+
+Here is an example of a long line being wrapped by the formatter:
+Before:
+```csharp
+internal static async Task<string> ExecuteKustoQueryAsync(string clusterUri, string databaseName, string kustoQuery, object? parameters = null, CancellationToken cancellationToken = default)
+```
+
+After:
+```csharp
+internal static async Task<string> ExecuteKustoQueryAsync(
+    string clusterUri,
+    string databaseName,
+    string kustoQuery,
+    object? parameters = null,
+    CancellationToken cancellationToken = default)
+```
 
 <!-----------------------[  Tests  ]------------------------<optional> section below--------------------->
-<!-- 
 ## Tests
- -->
 
 <!--
 INSTRUCTIONS:
 - Explain how to run the tests for this project. You may want to link here from Deployment (CI/CD) or Contributing sections.
-
 How to Evaluate & Examples:
   - https://aka.ms/StartRight/README-Template/Instructions#tests
 -->
 
-<!---- [TODO]  CONTENT GOES BELOW ------->
-<!--
-
-*Explain what these tests test and why* 
-
+To run the tests for this project, use the following command:
+```sh
+cargo test
 ```
-Give an example
-``` 
-
--->
-<!------====-- CONTENT GOES ABOVE ------->
-
 
 <!-----------------------[  Deployment (CI/CD)  ]-----------<optional> section below--------------------->
 ### Deployment (CI/CD)
@@ -140,15 +126,19 @@ INSTRUCTIONS:
     that will be run before pull request approval.
 - NOTE: Setting up an Azure DevOps pipeline gets you all 1ES compliance and build tooling such as component governance. 
   - More info: https://aka.ms/StartRight/README-Template/integrate-ado
-
 How to Evaluate & Examples:
   - https://aka.ms/StartRight/README-Template/Instructions#deployment-and-continuous-integration
 -->
 
-<!---- [TODO]  CONTENT GOES BELOW ------->
-_At this time, the repository does not use continuous integration or produce a website, artifact, or anything deployed._
-<!------====-- CONTENT GOES ABOVE ------->
+The repository uses a GitHub Action pipeline to automatically test the code and run static analysis for Rust. The pipeline is triggered on push and pull request events for the `main` branch.
 
+### Running the CI Pipeline
+
+To manually trigger the CI pipeline, you can use the following steps:
+
+1. Go to the "Actions" tab in your GitHub repository.
+2. Select the "Rust CI" workflow from the list.
+3. Click on the "Run workflow" button and select the branch you want to run the workflow on.
 
 <!-----------------------[  Versioning and Changelog  ]-----<optional> section below--------------------->
 
@@ -158,7 +148,6 @@ _At this time, the repository does not use continuous integration or produce a w
 INSTRUCTIONS:
 - If there is any information on a changelog, history, versioning style, roadmap or any related content tied to the 
   history and/or future of your project, this is a section for it.
-
 How to Evaluate & Examples:
   - https://aka.ms/StartRight/README-Template/Instructions#versioning-and-changelog
 -->
@@ -166,7 +155,6 @@ How to Evaluate & Examples:
 <!---- [TODO]  CONTENT GOES BELOW ------->
 <!-- We use [SemVer](https://aka.ms/StartRight/README-Template/semver) for versioning. -->
 <!------====-- CONTENT GOES ABOVE ------->
-
 
 -----------------------------------------------
 
@@ -180,16 +168,9 @@ INSTRUCTIONS:
   this repository such that people who are not members of the organization can access it.
 - If the repository is set to internalVisibility, you may also want to refer to the "Sharing a Link to this Repository" sub-section 
 of the [README-Template instructions](https://aka.ms/StartRight/README-Template/Instructions#sharing-a-link-to-this-repository) so new GitHub EMU users know to get 1ES-Enterprise-Visibility MyAccess group access and therefore will have read rights to any repo set to internalVisibility.
-
 How to Evaluate & Examples:
   - https://aka.ms/StartRight/README-Template/Instructions#how-to-share-an-accessible-link-to-this-repository
 -->
-
-
-<!---- [TODO]  CONTENT GOES BELOW ------->
-
-<!------====-- CONTENT GOES ABOVE ------->
-
 
 <!-----------------------[  Contributing  ]-----------------<recommended> section below------------------>
 ## Contributing
@@ -202,20 +183,16 @@ INSTRUCTIONS:
 - CONTRIBUTING content Location:
   - You can tell users how to contribute in the README directly or link to a separate CONTRIBUTING.md file.
   - The README sections "Contacts" and "Reuse Expectations" can be seen as subsections to CONTRIBUTING.
-  
 How to Evaluate & Examples:
   - https://aka.ms/StartRight/README-Template/Instructions#contributing
 -->
 
-<!---- [TODO]  CONTENT GOES BELOW ------->
 _This repository prefers outside contributors start forks rather than branches. For pull requests more complicated 
 than typos, it is often best to submit an issue first._
 
 If you are a new potential collaborator who finds reaching out or contributing to another project awkward, you may find 
 it useful to read these [tips & tricks](https://aka.ms/StartRight/README-Template/innerSource/2021_02_TipsAndTricksForCollaboration) 
 on InnerSource Communication.
-<!------====-- CONTENT GOES ABOVE ------->
-
 
 <!-----------------------[  Contacts  ]---------------------<recommended> section below------------------>
 <!-- 
@@ -224,46 +201,31 @@ on InnerSource Communication.
 <!--
 INSTRUCTIONS: 
 - To lower friction for new users and contributors, provide a preferred contact(s) and method (email, TEAMS, issue, etc.)
-
 How to Evaluate & Examples:
   - https://aka.ms/StartRight/README-Template/Instructions#contacts
 -->
 
-<!---- [TODO]  CONTENT GOES BELOW ------->
-
-<!------====-- CONTENT GOES ABOVE ------->
-
-
 <!-----------------------[  Support & Reuse Expectations  ]-----<recommended> section below-------------->
- 
 ### Support & Reuse Expectations
 
- 
 <!-- 
 INSTRUCTIONS:
 - To avoid misalignments use this section to set expectations in regards to current and future state of:
   - The level of support the owning team provides new users/contributors and 
   - The owning team's expectations in terms of incoming InnerSource requests and contributions.
-
 How to Evaluate & Examples:
   - https://aka.ms/StartRight/README-Template/Instructions#support-and-reuse-expectations
 -->
-
-<!---- [TODO]  CONTENT GOES BELOW ------->
 
 _The creators of this repository **DO NOT EXPECT REUSE**._
 
 If you do use it, please let us know via an email or 
 leave a note in an issue, so we can best understand the value of this repository.
-<!------====-- CONTENT GOES ABOVE ------->
-
 
 <!-----------------------[  Limitations  ]----------------------<optional> section below----------------->
-
 <!-- 
 ### Limitations 
 --> 
-
 <!-- 
 INSTRUCTIONS:
 - Use this section to make readers aware of any complications or limitations that they need to be made aware of.
@@ -272,17 +234,11 @@ INSTRUCTIONS:
     - If telemetry is collected
     - Dependencies with non-typical license requirements or limitations that need to not be missed. 
     - trademark limitations
- 
 How to Evaluate & Examples:
   - https://aka.ms/StartRight/README-Template/Instructions#limitations
 -->
 
-<!---- [TODO]  CONTENT GOES BELOW ------->
-
-<!------====-- CONTENT GOES ABOVE ------->
-
 --------------------------------------------
-
 
 <!-----------------------[  Links to Platform Policies  ]-------<recommended> section below-------------->
 ## How to Accomplish Common User Actions
