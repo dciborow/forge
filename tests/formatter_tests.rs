@@ -1,5 +1,5 @@
 use std::path::Path;
-use super::Formatter;
+use crate::formatter::Formatter;
 
 #[test]
 fn test_wrap_line() {
